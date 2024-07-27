@@ -18,7 +18,11 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./screens/register/register.module').then( m => m.RegisterPageModule)
+  },  {
+    path: 'task-modal',
+    loadChildren: () => import('./task-modal/task-modal.module').then( m => m.TaskModalPageModule)
   },
+
 
 ];
 

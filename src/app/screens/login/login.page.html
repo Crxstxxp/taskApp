@@ -4,17 +4,44 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <form (ngSubmit)="login()">
-    <ion-item>
-      <ion-label position="floating">Email</ion-label>
-      <ion-input [(ngModel)]="email" name="email" type="email" required></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Password</ion-label>
-      <ion-input [(ngModel)]="password" name="password" type="password" required></ion-input>
-    </ion-item>
-    <ion-button expand="full" type="submit">Login</ion-button>
-  </form>
-  <ion-button expand="full" routerLink="/register">Go to Register</ion-button>
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="8" offset-md="2" class="ion-text-center">
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+          <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input formControlName="email" type="email" placeholder="Ingrese su email"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="loginForm.get('email').invalid && (loginForm.get('email').dirty || loginForm.get('email').touched)">
+            <ion-text color="danger">
+              <p *ngIf="loginForm.get('email').hasError('required')">El email es obligatorio.</p>
+              <p *ngIf="loginForm.get('email').hasError('email')">Debe ingresar un email válido.</p>
+            </ion-text>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">Contraseña</ion-label>
+            <ion-input formControlName="password" type="password" placeholder="Ingrese su contraseña"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="loginForm.get('password').invalid && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+            <ion-text color="danger">
+              <p *ngIf="loginForm.get('password').hasError('required')">La contraseña es obligatoria.</p>
+              <p *ngIf="loginForm.get('password').hasError('minlength')">La contraseña debe tener al menos 8 caracteres.</p>
+            </ion-text>
+          </ion-item>
+
+          <ion-item *ngIf="errorMessage">
+            <ion-text color="danger">
+              <p>{{ errorMessage }}</p>
+            </ion-text>
+          </ion-item>
+
+          <ion-button expand="full" type="submit" [disabled]="loginForm.invalid">Iniciar sesión</ion-button>
+        </form>
+
+        <ion-button expand="full" routerLink="/register">Registrarse</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

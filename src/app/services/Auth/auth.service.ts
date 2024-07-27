@@ -21,6 +21,7 @@ export class AuthService {
       await this.afAuth.signInWithEmailAndPassword(email, password);
     } catch (error) {
       console.error(error);
+      throw error;
     }
   }
 

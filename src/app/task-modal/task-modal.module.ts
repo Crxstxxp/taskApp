@@ -4,18 +4,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { LoginPageRoutingModule } from './login-routing.module';
+import { TaskModalPageRoutingModule } from './task-modal-routing.module';
 
-import { LoginPage } from './login.page';
+import { TaskModalPage } from './task-modal.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LoginPageRoutingModule,
+    TaskModalPageRoutingModule,
     ReactiveFormsModule
   ],
-  declarations: [LoginPage]
+  declarations: [TaskModalPage]
 })
-export class LoginPageModule {}
+export class TaskModalPageModule {}
