@@ -10,6 +10,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,7 +20,8 @@ import { AngularFireModule } from '@angular/fire/compat';
     IonicModule.forRoot(),
     AppRoutingModule,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    ReactiveFormsModule
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
