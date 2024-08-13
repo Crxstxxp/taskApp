@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="profileForm" (ngSubmit)="updateProfile()">
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input formControlName="email" type="email" [disabled]></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">New Password</ion-label>
+      <ion-input formControlName="password" type="password"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="profileForm.get('password').invalid && (profileForm.get('password').dirty || profileForm.get('password').touched)">
+      <ion-text color="danger">
+        <p *ngIf="profileForm.get('password').hasError('required')">La contraseña es obligatoria.</p>
+        <p *ngIf="profileForm.get('password').hasError('minlength')">La contraseña debe tener al menos 8 caracteres.</p>
+      </ion-text>
+    </ion-item>
+
+    <ion-button expand="full" type="submit" [disabled]="profileForm.invalid">Update Password</ion-button>
+    <ion-button expand="full" color="danger" (click)="logout()">Logout</ion-button>
+  </form>
+</ion-content>

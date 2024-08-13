@@ -28,4 +28,15 @@ export class AuthService {
   async logout() {
     await this.afAuth.signOut();
   }
+
+  async updateEmail(email: string) {
+    const user = await this.afAuth.currentUser;
+    return user?.updateEmail(email);
+  }
+
+  async updatePassword(password: string) {
+    const user = await this.afAuth.currentUser;
+    return user?.updatePassword(password);
+  }
+
 }

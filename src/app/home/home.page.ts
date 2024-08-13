@@ -3,6 +3,7 @@ import { TaskService, Task } from '../services/task/task.service';
 import { Observable } from 'rxjs';
 import { ModalController } from '@ionic/angular';
 import { TaskModalPage } from '../task-modal/task-modal.page';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,8 @@ export class HomePage {
 
   constructor(
     private taskService: TaskService,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -59,5 +61,9 @@ export class HomePage {
     this.taskService.deleteTask(id)
       .then(() => this.loadTasks())
       .catch((err) => console.error(err));
+  }
+
+  goToProfile() {
+    this.router.navigate(['/profile']); // Asegúrate de que el componente tenga una ruta configurada en el routing module
   }
 }
