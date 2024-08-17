@@ -66,4 +66,9 @@ export class HomePage {
   goToProfile() {
     this.router.navigate(['/profile']); // Asegúrate de que el componente tenga una ruta configurada en el routing module
   }
+
+
+  goToMap() {
+    this.router.navigate(['/map']);
+  }
 }
